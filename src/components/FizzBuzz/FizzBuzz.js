@@ -9,12 +9,11 @@ const FizzBuzz = () => {
     setInterval(() => setCurrentDate(new Date()), 1000)
   }, [])
 
-  useEffect(() => {
+  const renderPerformance = () => {
     const currentSeconds = currentDate.getSeconds()
     const multipleOfThree = !(currentSeconds % 3)
     const multipleOfFive = !(currentSeconds % 5)
-
-    const renderFizzBuzz =
+    const checker =
       multipleOfThree && multipleOfFive
         ? "FizzBuzz"
         : multipleOfThree
@@ -23,8 +22,12 @@ const FizzBuzz = () => {
         ? "Buzz"
         : ""
 
-    setFizzBuzzPlayer(renderFizzBuzz)
-  }, [currentDate.getSeconds()])
+    return checker
+  }
+
+  useEffect(() => {
+    setFizzBuzzPlayer(renderPerformance())
+  }, [renderPerformance()])
 
   return (
     <SFizzBuzz isFizzBuzz={fizzBuzzPlayer === "FizzBuzz"}>
