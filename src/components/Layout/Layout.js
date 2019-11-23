@@ -1,8 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { Footer } from "components"
 import { SLayout } from "./SLayout"
+
+import "styles/index.scss"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -18,7 +19,6 @@ const Layout = ({ children }) => {
   return (
     <SLayout>
       <main>{children}</main>
-      <Footer />
     </SLayout>
   )
 }
